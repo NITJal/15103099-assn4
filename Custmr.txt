@@ -1,0 +1,21 @@
+class xyz{  
+    int am=10000;  
+      
+    synchronized void withdraw(int am){  
+    System.out.println("Sushil is going to withdraw...");  
+      
+    if(this.am<am){  
+    System.out.println("Less balance; waiting for deposit...");  
+    try{wait();}catch(Exception e){}  
+    }  
+    this.am-=am;  
+    System.out.println("Sushil withdraw completed...");  
+    }  
+      
+    synchronized void deposit(int am){  
+    System.out.println("Raman going to deposit...");  
+    this.am+=am;  
+    System.out.println("Raman deposit completed... ");  
+    notify();  
+    }  
+    } 
